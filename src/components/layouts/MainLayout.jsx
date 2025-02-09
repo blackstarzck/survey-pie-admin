@@ -1,4 +1,5 @@
 import { Layout, Menu } from 'antd';
+import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const { Header, Content, Sider } = Layout;
@@ -10,6 +11,9 @@ const items = [
 
 const MainLayout = ({ selectedKeys, children }) => {
   const navigate = useNavigate();
+  const contentStyle = useMemo(() => {
+    return { padding: 45 };
+  }, []);
 
   const handleMenuClick = (item) => {
     navigate(`/${item.key}`);
@@ -37,7 +41,7 @@ const MainLayout = ({ selectedKeys, children }) => {
       </Sider>
       <Layout>
         <Header />
-        <Content>{children}</Content>
+        <Content style={contentStyle}>{children}</Content>
       </Layout>
     </Layout>
   );
