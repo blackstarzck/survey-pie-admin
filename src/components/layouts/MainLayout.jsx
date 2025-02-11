@@ -9,10 +9,10 @@ const items = [
   { key: 'builder', path: '/builder', label: '빌더' },
 ];
 
-const MainLayout = ({ selectedKeys, children }) => {
+const MainLayout = ({ selectedKeys, children, padding = 45 }) => {
   const navigate = useNavigate();
   const contentStyle = useMemo(() => {
-    return { padding: 45 };
+    return { padding };
   }, []);
 
   const handleMenuClick = (item) => {

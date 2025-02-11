@@ -10,14 +10,16 @@ const Card = ({
   onUpButtonClick,
   onDownButtonClick,
   onDeleteButtonClick,
+  onClick,
+  isSelected,
 }) => {
   return (
-    <CardWrapper>
-      <Head>
+    <CardWrapper $isSelected={isSelected}>
+      <Head onClick={onClick}>
         <Title>{title}</Title>
         <Desc>{desc}</Desc>
       </Head>
-      <Body>{children}</Body>
+      <Body onClick={onClick}>{children}</Body>
       <ButtonGroupWrapper>
         <ButtonGroup>
           <Button type="text" onClick={onUpButtonClick} icon={<UpOutlined />} />
@@ -52,7 +54,8 @@ const ButtonGroup = styled.div`
 const CardWrapper = styled.div`
   width: 400px;
   margin: 30px auto;
-  border: 1px solid #dddddd;
+  border: ${({ isSelected }) =>
+    isSelected ? '3px solid blue' : '1px solid #dddddd'};
   background-color: #ffffff;
   position: relative;
 
