@@ -54,8 +54,8 @@ const ButtonGroup = styled.div`
 const CardWrapper = styled.div`
   width: 400px;
   margin: 30px auto;
-  border: ${({ isSelected }) =>
-    isSelected ? '3px solid blue' : '1px solid #dddddd'};
+  border: ${({ $isSelected }) =>
+    $isSelected ? '3px solid blue' : '1px solid #dddddd'};
   background-color: #ffffff;
   position: relative;
 
