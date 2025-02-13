@@ -13,7 +13,7 @@ const MainLayout = ({ selectedKeys, children, padding = 45 }) => {
   const navigate = useNavigate();
   const contentStyle = useMemo(() => {
     return { padding };
-  }, []);
+  }, [padding]);
 
   const handleMenuClick = (item) => {
     navigate(`/${item.key}`);

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import BuilderTitleInput from '../components/BuilderTitleInput';
+import FloadingButton from '../components/FloadingButton';
 import MainLayout from '../components/layouts/MainLayout';
 import OptionSection from '../components/OptionSection';
 import PreviewSection from '../components/PreviewSection';
@@ -37,6 +38,7 @@ const BuilderPage = () => {
           <OptionSection />
         </Col>
       </Row>
+      <FloadingButton />
     </MainLayout>
   );
 };

@@ -1,4 +1,4 @@
-import { Button, Checkbox, Form, Input, InputNumber, Switch } from 'antd';
+import { Button, Form, Input, InputNumber, Switch } from 'antd';
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -105,6 +105,10 @@ const OptionSection = () => {
   const onSubmit = () => {
     const { title, desc, required, ...options } = form.getFieldsValue();
     const values = { title, desc, required, options, type: question.type };
+
+    if (values.type === 'select' && typeof values.options.items === 'string') {
+      values.options.items = values.options.items.split(';');
+    }
 
     dispatch(
       setQuestion({
