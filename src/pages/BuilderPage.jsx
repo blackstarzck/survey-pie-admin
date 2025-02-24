@@ -9,6 +9,8 @@ import MainLayout from '../components/layouts/MainLayout';
 import OptionSection from '../components/OptionSection';
 import PreviewSection from '../components/PreviewSection';
 import getSurvey from '../services/getSurvey';
+import { setSelectedQuestionId } from '../store/selectedQuestionId/selectedQuestionIdSlice';
+import { setSurvey } from '../store/survey/surveySlice';
 
 const BuilderPage = () => {
   const loading = useSelector((state) => state.loading);
@@ -17,7 +19,17 @@ const BuilderPage = () => {
   const params = useParams();
 
   useEffect(() => {
-    dispatch(getSurvey(params.surveyId));
+    if (params.surveyId) {
+      dispatch(getSurvey(params.surveyId));
+    } else {
+      dispatch(
+        setSurvey({
+          title: '',
+          questions: [],
+        }),
+      );
+      dispatch(setSelectedQuestionId(null));
+    }
   }, [dispatch, params.surveyId]);
 
   if (error) {
